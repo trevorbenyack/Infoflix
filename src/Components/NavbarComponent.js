@@ -35,13 +35,26 @@ import {
 } from "reactstrap";
 import Results from "./Results";
 import LandingComponent from "./LandingComponent";
+import MovieDetailsModal from "./MovieDetailsModal";
+import Profile from "./Profile";
+import FindMoviesDropdown from "./FindMoviesDropdown";
+import MovieDetailsDropdown from "./FindMoviesDropdown";
 
 export default function AppNavbar(props) {
-    const [navbarColor, setNavbarColor] = useState("navbar-transparent");
+
+    const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
+    const [navbarCollapse, setNavbarCollapse] = React.useState(false);
 
     // Search Handling
     const [value, setValue] = useState('');
 
+    // Menu selection
+    const [selectionValue, setSelectionValue] = useState();
+    const handleMenuSelect = (selection) => {
+        setSelectionValue(selection);
+        props.changeComponent(<Results selection={selection} />);
+        console.log("movie id is " + selection);
+    }
     // saves the value in the search box
     const handleChange = e => {
         setValue(e.target.value);
@@ -55,15 +68,25 @@ export default function AppNavbar(props) {
         }
     };
 
+
+
+
+
     let changeComponent = e => {
         if(e.currentTarget.dataset.div_id === "landing") {
             props.changeComponent(<LandingComponent />)
         } else if (e.currentTarget.dataset.div_id === "discover") {
-            props.changeComponent(<Results />)
-        } else if (e.currentTarget.dataset.div_id === "search") {
+            props.changeComponent(<Results selection="0" />)
+        }
+        else if (e.currentTarget.dataset.div_id === "search") {
             props.changeComponent(<Results searchValue={value} />)
         }
     }
+
+    const toggleNavbarCollapse = () => {
+        setNavbarCollapse(!navbarCollapse);
+        document.documentElement.classList.toggle("nav-open");
+    };
 
     React.useEffect(() => {
         const updateNavbarColor = () => {
@@ -98,15 +121,39 @@ export default function AppNavbar(props) {
                         style={{cursor: 'pointer'}}
                         data-placement="bottom"
                         title="Infoflix"
+
+                        to="/"
+                        tag={Link}
+
+                        // This fields are for displaying the landing in Main view
+                        // Once profile component is fixed, this can be implemented
                         key={"landing"}
                         data-div_id={"landing"}
                         onClick={changeComponent}
                     >
                         Infoflix
                     </NavbarBrand>
-
+                    <button
+                        aria-expanded={navbarCollapse}
+                        className={classnames("navbar-toggler navbar-toggler", {
+                            toggled: navbarCollapse,
+                        })}
+                        onClick={toggleNavbarCollapse}
+                    >
+                        <span className="navbar-toggler-bar bar1" />
+                        <span className="navbar-toggler-bar bar2" />
+                        <span className="navbar-toggler-bar bar3" />
+                    </button>
                 </div>
                 <Nav navbar>
+                    <NavItem>
+                        <NavLink
+                            style={{cursor: 'pointer'}}
+                            onClick={() => props.setLoginModal(true)}
+                        >
+                            Login
+                        </NavLink>
+                    </NavItem>
                     <NavItem>
                         <Button
                             className="btn-round"
@@ -115,21 +162,25 @@ export default function AppNavbar(props) {
                             data-div_id={"discover"}
                             onClick={changeComponent}
                         >
-                            <i className="nc-icon nc-spaceship" /> Discover
+                            <i className="nc-icon nc-spaceship" /> Trending
                         </Button>
                     </NavItem>
-                    <NavItem>
-                            <Input
-                                placeholder="Search"
-                                type="text"
-                                key={"search"}
-                                data-div_id={"search"}
-                                value={value}
-                                onChange={handleChange}
-                                onKeyPress={handleKeypress}
-                                style={{margin: "14px 3px"}}
-                            />
-                    </NavItem>
+                    <NavItem style={{width: '200px', margin: "14px 3px 14px 14px"}}>
+                        <form>
+                            <MovieDetailsDropdown handleMenuSelect={handleMenuSelect}/>
+                        </form>
+                    </NavItem >
+                    {/*<NavItem style={{margin: "14px 3px 14px 14px"}}>*/}
+                    {/*    <Input*/}
+                    {/*        placeholder="Search"*/}
+                    {/*        type="text"*/}
+                    {/*        key={"search"}*/}
+                    {/*        data-div_id={"search"}*/}
+                    {/*        value={value}*/}
+                    {/*        onChange={handleChange}*/}
+                    {/*        onKeyPress={handleKeypress}*/}
+                    {/*    />*/}
+                    {/*</NavItem>*/}
                 </Nav>
             </Container>
         </Navbar>

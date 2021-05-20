@@ -6,15 +6,22 @@ export default function MovieThumbnail(props) {
     const movieTitle = props.movie.original_title;
     const movieId = props.movie.id;
 
-
     return (
-        <Card style={{
-            width: '10rem',
-            paddingRight: '0',
-            paddingLeft: '0',
-        }}>
-            <CardImg top src={moviePath} alt="..."/>
-        </Card>
+        <div className='col'>
+            <Card onClick={() => {
+                props.viewModal(true);
+                props.setId(movieId);
+            }}
+                style={{
+                paddingRight: '0',
+                paddingLeft: '0',
+                cursor: 'pointer'
+            }}>
+                <CardImg top src={moviePath} alt="..."/>
+            </Card>
+
+        </div>
+
     )
 
 }

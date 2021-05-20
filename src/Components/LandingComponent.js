@@ -5,15 +5,11 @@ import {Container} from "reactstrap";
 
 import foglow from "../assets/img/fog-low.png"
 import clouds from "assets/img/clouds.png"
-import background from "../assets/img/jeremy-yap-J39X2xX_8CQ-unsplash.jpg";
 
 export default function LandingComponent() {
     return (
-        <div
-            className="page-header section-dark"
-            style={{ backgroundImage: `url(${background})` }}
-        >
-            <div className="filter"/>
+        <div>
+
             <div className="content-center">
                 <Container>
                     <div className="title-brand">

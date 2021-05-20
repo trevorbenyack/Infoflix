@@ -118,7 +118,6 @@
   text-align: center;
   z-index: 100;
   color: #333333;
-  background: #ffffff;
   width: 22px !important;
   height: 22px;
   margin: 2px -11px;
@@ -126,7 +125,7 @@
   position: relative;
   float: left;
   padding: 0;
-  background-color: #FFFFFF;
+  background: #FFFFFF;
   box-shadow: 0 1px 1px #FFFFFF inset, 0 1px 1px rgba(0, 0, 0, 0.25); }
 
 .bootstrap-switch .bootstrap-switch-handle-on {
@@ -4653,8 +4652,7 @@ License - nucleoapp.com/license/
   position: relative;
   text-align: center;
   color: #FFFFFF;
-  display: block;
-  cursor: pointer;}
+  display: block;}
   .title-brand .type {
     position: absolute;
     font-size: 20px;
