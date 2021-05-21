@@ -10,39 +10,35 @@ class Results extends React.Component {
         this.state = {
             moviesArray: [],
             clickedMovieId: 0,
-            isModalOpen: false,
-            selectionValue: "0"
+            isModalOpen: false
         }
+        console.log("I'm in the constructor");
+
         this.loadMovies = this.loadMovies.bind(this);
         this.setId = this.setId.bind(this);
         this.viewDetailsModal = this.viewDetailsModal.bind(this);
-        this.setSelectionValue = this.setSelectionValue(this);
     }
 
     viewDetailsModal(isVisible) {
         this.setState({isModalOpen: isVisible})
     }
 
-    setSelectionValue() {
-        this.state = {selectionValue: this.props.selection};
-        this.loadMovies();
-    };
-
     componentDidMount() {
-        this.setSelectionValue();
-
+        this.loadMovies();
     }
 
     loadMovies() {
+
+        console.log("I'm in loadMovies" + this.props.selection);
 
         const baseUrl = "https://api.themoviedb.org/3/";
         const api_key = "?api_key=b6fbc7f3f313bd395902af464ef47262";
         const language = "&language=en-US&page="
         let searchUrl = "";
         let page = 1;
-        if(this.state.selectionValue === "0") {
+        if(this.props.selection === "5") {
             searchUrl = "https://api.themoviedb.org/3/discover/movie?api_key=b6fbc7f3f313bd395902af464ef47262&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1";
-        } else if (this.state.selectionValue === "1") {
+        } else if (this.props.selection === "1") {
             searchUrl = baseUrl + "movie/now_playing" + api_key + language + page;
             console.log(searchUrl);
         } else if (this.props.selection === "2") {
@@ -64,13 +60,9 @@ class Results extends React.Component {
     // when called, this sets the value of clickedMovie to id
     // The MovieDetails component is then updated to reflect the
     // details of the movie i
-
     setId(id) {
         this.setState({clickedMovieId: id});
     };
-
-
-
 
     render() {
         let displayMovies = [];

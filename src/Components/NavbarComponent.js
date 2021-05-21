@@ -45,49 +45,46 @@ export default function AppNavbar(props) {
     const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
     const [navbarCollapse, setNavbarCollapse] = React.useState(false);
 
-    // Search Handling
-    const [value, setValue] = useState('');
-
-    // Menu selection
-    const [selectionValue, setSelectionValue] = useState();
-    const handleMenuSelect = (selection) => {
-        setSelectionValue(selection);
-        props.changeComponent(<Results selection={selection} />);
-        console.log("movie id is " + selection);
+    // MENU SELECTION
+    const handleContentView = (selection) => {
+        console.log("selections is " + selection);
+        props.handleSelection(selection);
     }
-    // saves the value in the search box
-    const handleChange = e => {
-        setValue(e.target.value);
-    };
 
-    const handleKeypress = e => {
-        // it triggers by pressing the enter ke
-        if (e.key === 'Enter') {
-            // handleSubmit(e);
-            changeComponent(e);
-        }
-    };
-
-
-
+    // // SEARCH BOX
+    // const [value, setValue] = useState('');
+    // const handleChange = e => {
+    //     setValue(e.target.value);
+    // };
+    // const handleKeypress = e => {
+    //     // it triggers by pressing the enter ke
+    //     if (e.key === 'Enter') {
+    //         // handleSubmit(e);
+    //         changeComponent(e);
+    //     }
+    // };
+    //
+    // else if (e.currentTarget.dataset.div_id === "search") {
+    //     props.changeComponent(<Results searchValue='0' />)
+    // }
 
 
     let changeComponent = e => {
-        if(e.currentTarget.dataset.div_id === "landing") {
-            props.changeComponent(<LandingComponent />)
-        } else if (e.currentTarget.dataset.div_id === "discover") {
-            props.changeComponent(<Results selection="0" />)
-        }
-        else if (e.currentTarget.dataset.div_id === "search") {
-            props.changeComponent(<Results searchValue={value} />)
+        if (e.currentTarget.dataset.div_id === "landing") {
+            handleContentView("0");
+        } else if (e.currentTarget.dataset.div_id === "trending") {
+            handleContentView("5");
         }
     }
 
+
+
+
+    // CREATIVE TIM FUNCTIONS
     const toggleNavbarCollapse = () => {
         setNavbarCollapse(!navbarCollapse);
         document.documentElement.classList.toggle("nav-open");
     };
-
     React.useEffect(() => {
         const updateNavbarColor = () => {
             if (
@@ -109,6 +106,7 @@ export default function AppNavbar(props) {
             window.removeEventListener("scroll", updateNavbarColor);
         };
     });
+
     return (
         <Navbar
             className={classnames("fixed-top", navbarColor)}
@@ -158,8 +156,8 @@ export default function AppNavbar(props) {
                         <Button
                             className="btn-round"
                             color="danger"
-                            key={"discover"}
-                            data-div_id={"discover"}
+                            key={"trending"}
+                            data-div_id={"trending"}
                             onClick={changeComponent}
                         >
                             <i className="nc-icon nc-spaceship" /> Trending
@@ -167,9 +165,10 @@ export default function AppNavbar(props) {
                     </NavItem>
                     <NavItem style={{width: '200px', margin: "14px 3px 14px 14px"}}>
                         <form>
-                            <MovieDetailsDropdown handleMenuSelect={handleMenuSelect}/>
+                            <MovieDetailsDropdown handleMenuSelect={handleContentView}/>
                         </form>
                     </NavItem >
+                    {/*SEARCH BOX*/}
                     {/*<NavItem style={{margin: "14px 3px 14px 14px"}}>*/}
                     {/*    <Input*/}
                     {/*        placeholder="Search"*/}
