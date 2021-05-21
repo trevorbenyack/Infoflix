@@ -16,7 +16,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React, { useState } from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
 // nodejs library that concatenates strings
 import classnames from "classnames";
@@ -24,20 +24,14 @@ import '../index.css';
 
 // reactstrap components
 import {
-    Collapse,
     NavbarBrand,
     Navbar,
     NavItem,
     NavLink,
     Nav,
     Container,
-    Button, Input, FormGroup, Form,
+    Button
 } from "reactstrap";
-import Results from "./Results";
-import LandingComponent from "./LandingComponent";
-import MovieDetailsModal from "./MovieDetailsModal";
-import Profile from "./Profile";
-import FindMoviesDropdown from "./FindMoviesDropdown";
 import MovieDetailsDropdown from "./FindMoviesDropdown";
 
 export default function AppNavbar(props) {

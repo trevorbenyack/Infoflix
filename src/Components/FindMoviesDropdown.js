@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {FormGroup, Input, Label} from "reactstrap";
+import React from "react";
+import {FormGroup, Input} from "reactstrap";
 
 export default function MovieDetailsDropdown(props) {
 

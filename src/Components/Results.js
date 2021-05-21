@@ -1,7 +1,6 @@
 import React from 'react';
 import MovieThumbnail from './MovieThumbnail';
-import background from "../assets/img/jeremy-yap-J39X2xX_8CQ-unsplash.jpg";
-import {CardColumns, CardGroup, Container, Row} from "reactstrap";
+import {Container, Row} from "reactstrap";
 import TestModal from "./TestModal";
 
 class Results extends React.Component {

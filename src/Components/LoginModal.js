@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 // reactstrap components
-import {Button, Card, Col, Container, Form, FormGroup, Input, Modal, Row} from "reactstrap";
-import {Link, Redirect} from "react-router-dom";
+import {Button, FormGroup, Input, Modal} from "reactstrap";
+import {Redirect} from "react-router-dom";
 
 export default function LoginModal(props) {
 

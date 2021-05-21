@@ -1,9 +1,9 @@
-import React, {Component} from "react";
-import {Card, CardBody, CardImg, CardText, CardTitle} from "reactstrap";
+import React from "react";
+import {Card, CardImg} from "reactstrap";
 
 export default function MovieThumbnail(props) {
     const moviePath = "https://image.tmdb.org/t/p/original/" + props.movie.poster_path;
-    const movieTitle = props.movie.original_title;
+    // const movieTitle = props.movie.original_title;
     const movieId = props.movie.id;
 
     return (

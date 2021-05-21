@@ -1,6 +1,6 @@
 import React from "react";
 // reactstrap components
-import {Button, FormGroup, Input, Modal} from "reactstrap";
+import {Modal} from "reactstrap";
 
 function Example(props) {
 
