@@ -15,7 +15,7 @@ export default function MovieDetailsDropdown(props) {
                 id="inputState"
                 onChange={handleSelect}
             >
-                <option value="">Find Movies By...</option>
+                <option value="0">Find Movies By...</option>
                 <option value="1">Now Playing</option>
                 <option value="2">Most Popular</option>
                 <option value="3">Top Rated</option>
