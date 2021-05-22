@@ -22,6 +22,13 @@
  * Copyright 2012-2013 Mattia Larentis
  * http://www.apache.org/licenses/LICENSE-2.0
  */
+
+/*MODIFIED*/
+.movieDropdown {
+  width: 200px;
+  margin: 14px 3px;
+}
+
 .bootstrap-switch {
   display: inline-block;
   direction: ltr;
@@ -4895,7 +4902,8 @@ License - nucleoapp.com/license/
     font-size: 12px; }
   h6 {
     font-size: 1em; }
-  .navbar .container {
+
+  .navbar .navContainer {
     left: 0;
     width: 100%;
     -webkit-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
@@ -5109,7 +5117,7 @@ License - nucleoapp.com/license/
     100% {
       opacity: 1; } }
   .navbar-nav {
-    margin: 1px -15px; }
+    margin: 1px; }
     .navbar-nav .open .dropdown-menu > li > a {
       padding: 15px 15px 5px 50px; }
     .navbar-nav .open .dropdown-menu > li:first-child > a {
@@ -5307,8 +5315,8 @@ License - nucleoapp.com/license/
     border-top: none;
     text-align: left;
     border-left: 1px solid #CCC5B9;
-    padding-right: 0px;
-    padding-left: 40px;
+    padding-right: 20px;
+    padding-left: 20px;
     padding-top: 15px;
     -webkit-transform: translateX(230px);
     -moz-transform: translateX(230px);
@@ -5320,10 +5328,31 @@ License - nucleoapp.com/license/
     -o-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
     -ms-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
     transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1); }
+
+    /* CUSTOM */
+    #trending {
+      order: 1;
+      padding-right: 0px;
+    }
+    #trendingButton {
+      width: 100%;
+    }
+    #movieDropdown { order: 2; }
+    #login {
+      order: 3;
+      padding-left: 3px;
+    }
+
+    .navbar-collapse .movieDropdown {
+      width: 189px;
+    }
+
     .navbar-collapse ul {
       position: relative;
       z-index: 3;
-      height: 95%; }
+      height: 95%;
+    }
+
     .navbar-collapse .navbar-nav > .nav-item:last-child {
       border-bottom: 0; }
     .navbar-collapse .navbar-nav > .nav-item > .nav-link {

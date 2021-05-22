@@ -30,7 +30,7 @@ import {
     NavLink,
     Nav,
     Container,
-    Button
+    Button, Collapse
 } from "reactstrap";
 import MovieDetailsDropdown from "./FindMoviesDropdown";
 
@@ -137,8 +137,13 @@ export default function AppNavbar(props) {
                         <span className="navbar-toggler-bar bar3" />
                     </button>
                 </div>
+                <Collapse
+                    className="justify-content-end"
+                    navbar
+                    isOpen={navbarCollapse}
+                >
                 <Nav navbar>
-                    <NavItem>
+                    <NavItem id='login'>
                         <NavLink
                             style={{cursor: 'pointer'}}
                             onClick={() => props.setLoginModal(true)}
@@ -146,8 +151,9 @@ export default function AppNavbar(props) {
                             Login
                         </NavLink>
                     </NavItem>
-                    <NavItem>
+                    <NavItem id='trending'>
                         <Button
+                            id="trendingButton"
                             className="btn-round"
                             color="danger"
                             key={"trending"}
@@ -157,11 +163,13 @@ export default function AppNavbar(props) {
                             <i className="nc-icon nc-spaceship" /> Trending
                         </Button>
                     </NavItem>
-                    <NavItem style={{width: '200px', margin: "14px 3px 14px 14px"}}>
-                        <form>
+                    <NavItem id='movieDropdown'>
+                        <form className="movieDropdown">
                             <MovieDetailsDropdown handleMenuSelect={handleContentView}/>
                         </form>
                     </NavItem >
+
+
                     {/*SEARCH BOX*/}
                     {/*<NavItem style={{margin: "14px 3px 14px 14px"}}>*/}
                     {/*    <Input*/}
@@ -175,6 +183,7 @@ export default function AppNavbar(props) {
                     {/*    />*/}
                     {/*</NavItem>*/}
                 </Nav>
+                </Collapse>
             </Container>
         </Navbar>
     );
