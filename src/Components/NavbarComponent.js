@@ -71,9 +71,6 @@ export default function AppNavbar(props) {
         }
     }
 
-
-
-
     // CREATIVE TIM FUNCTIONS
     const toggleNavbarCollapse = () => {
         setNavbarCollapse(!navbarCollapse);
@@ -168,7 +165,6 @@ export default function AppNavbar(props) {
                             <MovieDetailsDropdown handleMenuSelect={handleContentView}/>
                         </form>
                     </NavItem >
-
 
                     {/*SEARCH BOX*/}
                     {/*<NavItem style={{margin: "14px 3px 14px 14px"}}>*/}

@@ -62,7 +62,11 @@ export default function LoginModal(props) {
             <div className="modal-header no-border-header text-center">
                 <h6 className="text-muted">Welcome</h6>
                 <h3 className="modal-title text-center">Log In</h3>
-                <p>Doesn't take you anywhere, but why not!</p>
+                <p>Doesn't really log you in 😵‍💫</p>
+                <p>This dialogue checks to see if your password is of a valid format.
+                    If so, you'll be redirected to a fake profile page. If not, you'll
+                    be prompted to enter a valid password.
+                </p>
             </div>
             <div className="modal-body">
                 <FormGroup className={emailFormState}>
