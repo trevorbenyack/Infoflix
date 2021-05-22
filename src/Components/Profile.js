@@ -45,7 +45,7 @@ import clemOnojeghuo2 from "../assets/img/faces/clem-onojeghuo-2.jpg"
 import ayoOgunseinde2 from "../assets/img/faces/ayo-ogunseinde-2.jpg"
 
 
-function ProfilePage() {
+function ProfilePage(props) {
     const [activeTab, setActiveTab] = React.useState("1");
 
     const toggle = (tab) => {
@@ -63,7 +63,6 @@ function ProfilePage() {
     });
     return (
         <>
-            <NavbarComponent />
             <ProfilePageHeader />
             <div className="section profile-content">
                 <Container>

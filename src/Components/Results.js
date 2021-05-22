@@ -73,7 +73,7 @@ class Results extends React.Component {
             />)
         // displayMovies = this.state.moviesArray.map(this.makeMovieThumbnail);
         return (
-            <Container style={{height: '100%', overflowY: 'scroll', position: 'absolute', padding: '0'}}>
+            <Container style={{height: '100%', overflowY: 'scroll', position: 'absolute', padding: '0px 12px'}}>
                 <Row style={{height: '100px'}}/>
                 <Row
                     className='row row-cols-1 row-cols-md-5 g-4'>
