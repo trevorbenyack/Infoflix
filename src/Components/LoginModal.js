@@ -34,17 +34,26 @@ export default function LoginModal(props) {
         }
     }
 
+    // Checks if email is valid when login button is clicked
+    const [redirect, setRedirect] = useState(false);
     const checkEmailOnSubmit = () => {
         if (isValid && emailValue !== "") {
-            return <Redirect to='/profile/' />
+            setRedirect(true);
         } else {
             setEmailValue("");
             setEmailPlaceholder("Must enter a valid password");
             setEmailFormState("has-danger");
         }
     }
+    const RenderRedirect = () => {
+        if (redirect) {
+            return <Redirect to='/profile' />
+        } else return null;
+    }
 
     return (
+        <>
+        <RenderRedirect />
         <Modal
             isOpen={props.loginModal}
             toggle={() => props.setLoginModal(false)}
@@ -87,5 +96,6 @@ export default function LoginModal(props) {
                 </div>
             </div>
         </Modal>
+        </>
     );
 }
