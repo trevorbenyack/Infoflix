@@ -10,13 +10,7 @@ import Results from "./Results";
 
 function Main() {
 
-    // handles whether login modal is shown or not
-    const [loginModal, setLoginModal] = React.useState(false);
-    function handleSetLoginModal(newValue) {
-        setLoginModal(newValue);
-    }
-
-    // controls which main component is displayed
+    // controls which content component is displayed
     const [selection, setSelection] = useState("0");
     function HandleSelection(newValue) {
         setSelection(newValue)
@@ -43,16 +37,11 @@ function Main() {
     }
 
     return (
-        <div>
             <div className="page-header section-dark" style={{backgroundImage: `url(${background})` }}>
                 <div className="filter" style={{zIndex: '0'}}/>
-                <NavbarComponent
-                    handleSelection={HandleSelection}
-                    setLoginModal={handleSetLoginModal}/>
+                <NavbarComponent handleSelection={HandleSelection} />
                 <ContentView />
             </div>
-            <LoginModal loginModal={loginModal} setLoginModal={handleSetLoginModal}/>
-        </div>
     );
 }
 

@@ -33,6 +33,7 @@ import {
     Button, Collapse
 } from "reactstrap";
 import MovieDetailsDropdown from "./FindMoviesDropdown";
+import LoginModal from "./LoginModal";
 
 export default function AppNavbar(props) {
 
@@ -43,6 +44,15 @@ export default function AppNavbar(props) {
     const handleContentView = (selection) => {
         console.log("selections is " + selection);
         props.handleSelection(selection);
+    }
+
+    // Handles clicking the infoflix logo or the trending button
+    let changeComponent = e => {
+        if (e.currentTarget.dataset.div_id === "landing") {
+            handleContentView("0");
+        } else if (e.currentTarget.dataset.div_id === "trending") {
+            handleContentView("5");
+        }
     }
 
     // // SEARCH BOX
@@ -62,14 +72,12 @@ export default function AppNavbar(props) {
     //     props.changeComponent(<Results searchValue='0' />)
     // }
 
-
-    let changeComponent = e => {
-        if (e.currentTarget.dataset.div_id === "landing") {
-            handleContentView("0");
-        } else if (e.currentTarget.dataset.div_id === "trending") {
-            handleContentView("5");
-        }
+    // handles whether login modal is shown or not
+    const [loginModal, setLoginModal] = React.useState(false);
+    function handleSetLoginModal(newValue) {
+        setLoginModal(newValue);
     }
+
 
     // CREATIVE TIM FUNCTIONS
     const toggleNavbarCollapse = () => {
@@ -99,88 +107,88 @@ export default function AppNavbar(props) {
     });
 
     return (
-        <Navbar
-            className={classnames("fixed-top", navbarColor)}
-            color-on-scroll="300"
-            expand="lg"
-        >
-            <Container>
-                <div className="navbar-translate" >
-                    <NavbarBrand
-                        style={{cursor: 'pointer'}}
-                        data-placement="bottom"
-                        title="Infoflix"
-
-                        to="/"
-                        tag={Link}
-
-                        // This fields are for displaying the landing in Main view
-                        // Once profile component is fixed, this can be implemented
-                        key={"landing"}
-                        data-div_id={"landing"}
-                        onClick={changeComponent}
-                    >
-                        Infoflix
-                    </NavbarBrand>
-                    <button
-                        aria-expanded={navbarCollapse}
-                        className={classnames("navbar-toggler navbar-toggler", {
-                            toggled: navbarCollapse,
-                        })}
-                        onClick={toggleNavbarCollapse}
-                    >
-                        <span className="navbar-toggler-bar bar1" />
-                        <span className="navbar-toggler-bar bar2" />
-                        <span className="navbar-toggler-bar bar3" />
-                    </button>
-                </div>
-                <Collapse
-                    className="justify-content-end"
-                    navbar
-                    isOpen={navbarCollapse}
-                >
-                <Nav navbar>
-                    <NavItem id='login'>
-                        <NavLink
+        <>
+            <LoginModal loginModal={loginModal} setLoginModal={handleSetLoginModal}/>
+            <Navbar className={classnames("fixed-top", navbarColor)} color-on-scroll="300" expand="lg">
+                <Container>
+                    <div className="navbar-translate" >
+                        <NavbarBrand
                             style={{cursor: 'pointer'}}
-                            onClick={() => props.setLoginModal(true)}
-                        >
-                            Login
-                        </NavLink>
-                    </NavItem>
-                    <NavItem id='trending'>
-                        <Button
-                            id="trendingButton"
-                            className="btn-round"
-                            color="danger"
-                            key={"trending"}
-                            data-div_id={"trending"}
+                            data-placement="bottom"
+                            title="Infoflix"
+
+                            to="/"
+                            tag={Link}
+
+                            // This fields are for displaying the landing in Main view
+                            // Once profile component is fixed, this can be implemented
+                            key={"landing"}
+                            data-div_id={"landing"}
                             onClick={changeComponent}
                         >
-                            <i className="nc-icon nc-spaceship" /> Trending
-                        </Button>
-                    </NavItem>
-                    <NavItem id='movieDropdown'>
-                        <form className="movieDropdown">
-                            <MovieDetailsDropdown handleMenuSelect={handleContentView}/>
-                        </form>
-                    </NavItem >
+                            Infoflix
+                        </NavbarBrand>
+                        <button
+                            aria-expanded={navbarCollapse}
+                            className={classnames("navbar-toggler navbar-toggler", {
+                                toggled: navbarCollapse,
+                            })}
+                            onClick={toggleNavbarCollapse}
+                        >
+                            <span className="navbar-toggler-bar bar1" />
+                            <span className="navbar-toggler-bar bar2" />
+                            <span className="navbar-toggler-bar bar3" />
+                        </button>
+                    </div>
+                    <Collapse
+                        className="justify-content-end"
+                        navbar
+                        isOpen={navbarCollapse}
+                    >
+                        <Nav navbar>
+                            <NavItem id='login'>
+                                <NavLink
+                                    style={{cursor: 'pointer'}}
+                                    onClick={() => setLoginModal(true)}
+                                >
+                                    Login
+                                </NavLink>
+                            </NavItem>
+                            <NavItem id='trending'>
+                                <Button
+                                    id="trendingButton"
+                                    className="btn-round"
+                                    color="danger"
+                                    key={"trending"}
+                                    data-div_id={"trending"}
+                                    onClick={changeComponent}
+                                >
+                                    <i className="nc-icon nc-spaceship" /> Trending
+                                </Button>
+                            </NavItem>
+                            <NavItem id='movieDropdown'>
+                                <form className="movieDropdown">
+                                    <MovieDetailsDropdown handleMenuSelect={handleContentView}/>
+                                </form>
+                            </NavItem >
 
-                    {/*SEARCH BOX*/}
-                    {/*<NavItem style={{margin: "14px 3px 14px 14px"}}>*/}
-                    {/*    <Input*/}
-                    {/*        placeholder="Search"*/}
-                    {/*        type="text"*/}
-                    {/*        key={"search"}*/}
-                    {/*        data-div_id={"search"}*/}
-                    {/*        value={value}*/}
-                    {/*        onChange={handleChange}*/}
-                    {/*        onKeyPress={handleKeypress}*/}
-                    {/*    />*/}
-                    {/*</NavItem>*/}
-                </Nav>
-                </Collapse>
-            </Container>
-        </Navbar>
+                            {/*SEARCH BOX*/}
+                            {/*<NavItem style={{margin: "14px 3px 14px 14px"}}>*/}
+                            {/*    <Input*/}
+                            {/*        placeholder="Search"*/}
+                            {/*        type="text"*/}
+                            {/*        key={"search"}*/}
+                            {/*        data-div_id={"search"}*/}
+                            {/*        value={value}*/}
+                            {/*        onChange={handleChange}*/}
+                            {/*        onKeyPress={handleKeypress}*/}
+                            {/*    />*/}
+                            {/*</NavItem>*/}
+                        </Nav>
+                    </Collapse>
+                </Container>
+            </Navbar>
+        </>
+
     );
 }

@@ -6,7 +6,7 @@ Built with React!
 
 ### To Do:
 - Add additional page scrolling for thumbnails view
-- Fix display information and styling for details modal popup
+- Fix display information and styling for movie details modal popup
 
 ### Images
 ![](src/assets/img/readme-images/landing-page.png)
