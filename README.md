@@ -1,6 +1,6 @@
 # Infloflix
 
-View the live project here: [Infloflix]('https://infoflix-ten.vercel.app')
+View the live project here: [Infloflix](https://infoflix-ten.vercel.app)
 
 Built with React!
 
