@@ -42,7 +42,6 @@ export default function AppNavbar(props) {
 
     // MENU SELECTION
     const handleContentView = (selection) => {
-        console.log("selections is " + selection);
         props.handleSelection(selection);
     }
 

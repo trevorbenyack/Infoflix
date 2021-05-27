@@ -35,7 +35,7 @@ import {
 } from "reactstrap";
 
 // core components
-import NavbarComponent from "./NavbarComponent"
+// import NavbarComponent from "./NavbarComponent"
 import ProfilePageHeader from "./ProfilePageHeader.js";
 import DemoFooter from "./DemoFooter.js";
 

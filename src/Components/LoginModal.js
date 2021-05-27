@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 // reactstrap components
-import {Button, FormGroup, Input, Modal} from "reactstrap";
+import {Button, FormGroup, Input, Label, Modal} from "reactstrap";
 import {Redirect} from "react-router-dom";
 
 export default function LoginModal(props) {
@@ -70,9 +70,8 @@ export default function LoginModal(props) {
             </div>
             <div className="modal-body">
                 <FormGroup className={emailFormState}>
-                    <label>Email</label>
+                    <Label>Email</Label>
                     <Input
-                        className='my-2'
                         value={emailValue}
                         placeholder={emailPlaceholder}
                         type="text"
@@ -80,16 +79,14 @@ export default function LoginModal(props) {
                     />
                 </FormGroup>
                 <FormGroup>
-                    <label>Password</label>
+                    <Label>Password</Label>
                     <Input
-                        className='my-2'
                         defaultValue=""
                         placeholder="Password"
                         type="password"
 
                     />
                 </FormGroup>
-                <div className='my-3'>
                     <Button
                         block className="btn-round"
                         color="default"
@@ -97,7 +94,7 @@ export default function LoginModal(props) {
                     >
                         Log in
                     </Button>
-                </div>
+
             </div>
         </Modal>
         </>

@@ -1,25 +1,20 @@
 import React from 'react';
 import MovieThumbnail from './MovieThumbnail';
 import {Container, Row} from "reactstrap";
-import TestModal from "./TestModal";
+import MovieDetailsModal from "./MovieDetailsModal";
 
 class Results extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             moviesArray: [],
-            clickedMovieId: 0,
-            isModalOpen: false
+            detailsModalMovie: {},
+            isDetailsModalOpen: false
         }
-        console.log("I'm in the constructor");
 
         this.loadMovies = this.loadMovies.bind(this);
-        this.setId = this.setId.bind(this);
+        this.setDetailsModalMovie = this.setDetailsModalMovie.bind(this);
         this.viewDetailsModal = this.viewDetailsModal.bind(this);
-    }
-
-    viewDetailsModal(isVisible) {
-        this.setState({isModalOpen: isVisible})
     }
 
     componentDidMount() {
@@ -27,9 +22,6 @@ class Results extends React.Component {
     }
 
     loadMovies() {
-
-        console.log("I'm in loadMovies" + this.props.selection);
-
         const baseUrl = "https://api.themoviedb.org/3/";
         const api_key = "?api_key=b6fbc7f3f313bd395902af464ef47262";
         const language = "&language=en-US&page="
@@ -56,11 +48,15 @@ class Results extends React.Component {
             .then(jsonData => this.setState({moviesArray: jsonData.results}));
     }
 
+    viewDetailsModal(isVisible) {
+        this.setState({isDetailsModalOpen: isVisible})
+    }
+
     // when called, this sets the value of clickedMovie to id
     // The MovieDetails component is then updated to reflect the
     // details of the movie i
-    setId(id) {
-        this.setState({clickedMovieId: id});
+    setDetailsModalMovie(detailsModalMovie) {
+        this.setState({detailsModalMovie: detailsModalMovie});
     };
 
     render() {
@@ -68,8 +64,8 @@ class Results extends React.Component {
         displayMovies = this.state.moviesArray
             .map(m => <MovieThumbnail
                 movie={m}
-                viewModal={this.viewDetailsModal}
-                setId={this.setId}
+                viewDetailsModal={this.viewDetailsModal}
+                setDetailsModalMovie={this.setDetailsModalMovie}
             />)
         // displayMovies = this.state.moviesArray.map(this.makeMovieThumbnail);
         return (
@@ -79,11 +75,10 @@ class Results extends React.Component {
                     className='row row-cols-1 row-cols-md-5 g-4'>
                     {displayMovies}
                 </Row>
-                <TestModal
-                    isModalOpen={this.state.isModalOpen}
-                    viewModal={this.viewDetailsModal}
-                    setId={this.setId}
-                    movieId={this.state.clickedMovieId}
+                <MovieDetailsModal
+                    isDetailsModalOpen={this.state.isDetailsModalOpen}
+                    viewDetailsModal={this.viewDetailsModal}
+                    movie={this.state.detailsModalMovie}
                 />
             </Container>
         );

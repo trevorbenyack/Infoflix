@@ -23,12 +23,47 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  */
 
-/*MODIFIED*/
+/*CUSTOM*/
 .movieDropdown {
   width: 200px;
   margin: 14px 3px;
   padding-left: 13px;
 }
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.modal-header .close {
+  padding: 1rem;
+  margin: -1rem -1rem -1rem auto;
+}
+button.close {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+}
+
+.close {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: .5;
+}
+/* Changes label text on Login modal */
+body.modal-open {
+  font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
+}
+
+div.modal-content {
+  overflow: hidden;
+}
+
+/* END CUSTOM */
 
 .bootstrap-switch {
   display: inline-block;
@@ -3786,11 +3821,20 @@ License - nucleoapp.com/license/
     margin-top: 10px; }
 
 .modal-dialog {
-  padding-top: 60px; }
+  padding-top: 60px;
+}
 
 .modal-body {
   padding: 20px 50px;
   color: #000; }
+
+/* CUSTOM */
+.modal-body .form-group {
+  margin-bottom: 1rem;
+}
+.modal-body label {
+  margin-bottom: .5rem;
+}
 
 .modal-footer {
   border-top: 1px solid #DDDDDD;

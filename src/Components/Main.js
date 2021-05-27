@@ -3,10 +3,7 @@ import React, {useState} from "react";
 import NavbarComponent from ".//NavbarComponent";
 import LandingComponent from "./LandingComponent";
 import background from "../assets/img/jeremy-yap-J39X2xX_8CQ-unsplash.jpg";
-import LoginModal from "./LoginModal";
 import Results from "./Results";
-
-// core components
 
 function Main() {
 
@@ -14,9 +11,6 @@ function Main() {
     const [selection, setSelection] = useState("0");
     function HandleSelection(newValue) {
         setSelection(newValue)
-        console.log("inside handleContentComponent");
-        console.log(selection);
-
     }
 
     // useEffect(() => {}, [content]);
