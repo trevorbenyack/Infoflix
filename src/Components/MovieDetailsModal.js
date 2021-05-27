@@ -19,7 +19,7 @@ function MovieDetailsModal(props) {
                             <div className="card-text" style={{display: "flex", justifyContent: "flex-end"}}>
                                 <button
                                     aria-label="Close"
-                                    className="close"
+                                    className="close mr-2"
                                     data-dismiss="modal"
                                     type="button"
                                     onClick={() => props.viewDetailsModal(false)}
