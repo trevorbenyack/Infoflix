@@ -21,8 +21,8 @@ export default function LandingComponent() {
                             <img alt="..." src={foglow}/>
                         </div>
                     </div>
-                    <h2 className="presentation-subtitle text-center">
-                        Your one-stop shop for as many movie summaries as you can handle
+                    <h2 className="presentation-subtitle text-center" style={{zIndex: "3"}}>
+                        <b>Your one-stop shop for as many movie summaries as you can handle</b>
                     </h2>
                 </Container>
             </div>
